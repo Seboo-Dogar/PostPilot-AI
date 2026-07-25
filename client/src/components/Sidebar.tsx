@@ -1,5 +1,4 @@
-import { CalendarDaysIcon, LayoutDashboardIcon, UsersIcon, Wand2Icon } from 'lucide-react'
-import React from 'react'
+import { CalendarDaysIcon, LayoutDashboardIcon, LogOutIcon, UsersIcon, Wand2Icon } from 'lucide-react'
 import { NavLink, useLocation } from 'react-router-dom'
 
 const Sidebar = ({isOpen, setIsOpen} : {isOpen: boolean, setIsOpen: (val: boolean) => void} ) => {
@@ -56,7 +55,16 @@ const Sidebar = ({isOpen, setIsOpen} : {isOpen: boolean, setIsOpen: (val: boolea
           <div className='rounded-full size-8 bg-linear-to-br from-red-400 to-pink-400 flex items-center justify-center text-white text-sm font-medium shrink-0'>
             {user?.name?.charAt(0).toUpperCase() || "U"}
           </div>
+
+          <div className='flex-1 min-w-0'>
+            <div className='text-sm text-slate-800 truncate'>{user?.name}</div>
+            <div className='text-xs text-slate-400 truncate'>{user?.email}</div>
+          </div>
         </div>
+
+        <button onClick={logout} className='mt-1 flex items-center gap-2 px-3 py-2 w-full rounded text-sm text-slate-500 hover:bg-red-50 hover:text-red-500 transition-all duration-150'>
+          <LogOutIcon className='size-4' /> Sign Out
+        </button>
       </div>
     </div>
   )
